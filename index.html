@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CV – Nguyễn Minh Châu</title>
+    <meta
+      name="description"
+      content="Mẫu CV một trang, hiện đại, chuẩn in A4, tối ưu ATS"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* --------- CSS VARIABLES & RESET --------- */
+      :root {
+        --bg: #f7f7fb;
+        --paper: #ffffff;
+        --text: #1f2937; /* slate-800 */
+        --muted: #6b7280; /* gray-500 */
+        --line: #e5e7eb; /* gray-200 */
+        --accent: #2563eb; /* blue-600 */
+        --accent-weak: #dbeafe; /* blue-100 */
+        --shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+      }
+
+      [data-theme="green"] {
+        --accent: #059669;
+        --accent-weak: #d1fae5;
+      }
+      [data-theme="violet"] {
+        --accent: #7c3aed;
+        --accent-weak: #ede9fe;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b1020;
+          --paper: #0f172a;
+          --text: #e5e7eb;
+          --muted: #94a3b8;
+          --line: #1f2940;
+          --shadow: 0 10px 30px rgba(2, 6, 23, 0.4);
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+          sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* --------- LAYOUT WRAPPER --------- */
+      .page {
+        max-width: 980px;
+        margin: 40px auto;
+        padding: 24px;
+      }
+      .sheet {
+        background: var(--paper);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        border: 1px solid var(--line);
+      }
+
+      .toolbar {
+        display: flex;
+        gap: 8px;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+      .toolbar .left,
+      .toolbar .right {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .btn {
+        border: 1px solid var(--line);
+        background: var(--paper);
+        color: var(--text);
+        padding: 10px 14px;
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .btn:hover {
+        filter: brightness(0.98);
+      }
+      .swatch {
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        cursor: pointer;
+      }
+      .swatch.blue {
+        background: #2563eb;
+      }
+      .swatch.green {
+        background: #059669;
+      }
+      .swatch.violet {
+        background: #7c3aed;
+      }
+
+      /* --------- HEADER --------- */
+      header {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 24px;
+        padding: 28px 28px 16px 28px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .avatar {
+        width: 220px;
+        height: 220px;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: linear-gradient(135deg, var(--accent-weak), #fff0);
+        display: grid;
+        place-items: center;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .title h1 {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: 44px;
+        line-height: 1.1;
+        margin: 0 0 8px 0;
+        letter-spacing: 0.2px;
+      }
+      .role {
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 18px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .meta svg {
+        width: 16px;
+        height: 16px;
+        vertical-align: -2px;
+        margin-right: 6px;
+      }
+
+      /* --------- BODY TWO-COLUMN --------- */
+      .body {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 24px;
+        padding: 24px 28px 32px 28px;
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 18px;
+      }
+      .card h3 {
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        color: var(--muted);
+        margin: 0 0 12px;
+      }
+
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .tag {
+        border: 1px dashed var(--line);
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 12px;
+      }
+
+      .progress {
+        display: grid;
+        gap: 8px;
+      }
+      .progress .row {
+        display: grid;
+        grid-template-columns: 1fr 80px;
+        gap: 10px;
+        align-items: center;
+        font-size: 14px;
+      }
+      .bar {
+        height: 8px;
+        background: var(--line);
+        border-radius: 999px;
+        overflow: hidden;
+      }
+      .bar > span {
+        display: block;
+        height: 100%;
+        width: var(--v, 50%);
+        background: var(--accent);
+      }
+
+      .timeline {
+        display: grid;
+        gap: 16px;
+      }
+      .item {
+        display: grid;
+        gap: 6px;
+        border-left: 2px solid var(--accent-weak);
+        padding-left: 14px;
+      }
+      .item h4 {
+        margin: 0;
+        font-size: 16px;
+      }
+      .item .when {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .item ul {
+        margin: 6px 0 0 16px;
+        padding: 0;
+      }
+      .item li {
+        margin: 6px 0;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      /* --------- PRINT (A4) --------- */
+      @page {
+        size: A4;
+        margin: 14mm;
+      }
+      @media print {
+        :root {
+          --bg: #fff;
+          --paper: #fff;
+        }
+        body {
+          background: #fff;
+        }
+        .page {
+          margin: 0;
+          padding: 0;
+        }
+        .sheet {
+          border: 0;
+          border-radius: 0;
+          box-shadow: none;
+        }
+        .toolbar {
+          display: none !important;
+        }
+      }
+
+      /* --------- RESPONSIVE --------- */
+      @media (max-width: 860px) {
+        header {
+          grid-template-columns: 1fr;
+        }
+        .avatar {
+          width: 100%;
+          height: 220px;
+        }
+        .body {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page" id="root">
+      <!-- Toolbar (không in ra) -->
+      <div class="toolbar">
+        <div class="left">
+          <button class="btn" onclick="window.print()">📄 Tải PDF</button>
+        </div>
+        <div class="right" aria-label="Đổi màu chủ đạo">
+          <div class="swatch blue" title="Blue" onclick="setTheme('')"></div>
+          <div
+            class="swatch green"
+            title="Green"
+            onclick="setTheme('green')"
+          ></div>
+          <div
+            class="swatch violet"
+            title="Violet"
+            onclick="setTheme('violet')"
+          ></div>
+        </div>
+      </div>
+
+      <section class="sheet" role="document" aria-label="CV">
+        <header>
+          <div class="avatar" aria-label="Ảnh đại diện">
+            <!-- Thay ảnh của bạn tại đây -->
+            <!-- <img src="your-photo.jpg" alt="Ảnh chân dung Nguyễn Văn A"/> -->
+            Thêm ảnh của bạn ở đây
+          </div>
+          <div class="title">
+            <h1>Nguyễn Văn A</h1>
+            <div class="role">Software Developer</div>
+            <div class="meta">
+              <div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                Vinh Long
+              </div>
+              <div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M22 12h-4" />
+                  <path d="M2 12h4" />
+                  <path d="M12 2v4" />
+                  <path d="M12 22v-4" />
+                  <circle cx="12" cy="12" r="7" />
+                </svg>
+                28 tuổi
+              </div>
+              <div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M4 4h16v16H4z" />
+                  <path d="M22 6 12 13 2 6" />
+                </svg>
+                sinhvienitsp@gmail.com
+              </div>
+              <div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path
+                    d="M22 12.07A10 10 0 1 1 11.93 2 10 10 0 0 1 22 12.07z"
+                  />
+                  <path d="M16 8a6 6 0 0 1-8 8" />
+                </svg>
+                linkedin.com/in/username
+              </div>
+              <div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77 5.44 5.44 0 0 0 3.5 8.49c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                  />
+                </svg>
+                github.com/redlogs1st
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div class="body">
+          <!-- SIDEBAR -->
+          <aside class="left" aria-label="Cột trái">
+            <section class="card">
+              <h3>Tóm tắt</h3>
+              <p>
+                Experienced software developer specializing in process
+                automation, with expertise in designing and developing web,
+                mobile, and desktop applications.
+              </p>
+            </section>
+
+            <section class="card">
+              <h3>Kỹ năng chính</h3>
+              <div class="tag-list">
+                <span class="tag">HTML/CSS/JS</span>
+                <span class="tag">.NET / ASP.NET / WPF</span>
+                <span class="tag">JavaScript / TypeScript </span>
+                <span class="tag">Flutter / React Native / Java Mobile</span>
+                <span class="tag">Python/PyQT</span>
+                <span class="tag">Version Control Github/GitLab </span>
+                <span class="tag">SQL/noSQL</span>
+                <span class="tag">Azure for Remote Database</span>
+                <span class="tag">REStful API/ERP Integration</span>
+                <span class="tag">Deployment</span>
+              </div>
+            </section>
+
+            <section class="card">
+              <h3>Năng lực</h3>
+              <div class="progress">
+                <div class="row">
+                  <span>Web App</span>
+                  <div class="bar"><span style="--v: 90%"></span></div>
+                </div>
+                <div class="row">
+                  <span>Desktop App</span>
+                  <div class="bar"><span style="--v: 90%"></span></div>
+                </div>
+                <div class="row">
+                  <span>Mobile App</span>
+                  <div class="bar"><span style="--v: 80%"></span></div>
+                </div>
+                <div class="row">
+                  <span>Business Analyst</span>
+                  <div class="bar"><span style="--v: 70%"></span></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="card">
+              <h3>Chứng chỉ</h3>
+              <ul>
+                <li>Meta Front-End Developer (2024)</li>
+                <li>Google UX Design (2023)</li>
+              </ul>
+            </section>
+
+            <section class="card">
+              <h3>Liên hệ</h3>
+              <ul style="margin: 0; padding-left: 18px">
+                <li>Phone: 0971340629</li>
+                <li>Email: sinhvienitsp@gmail.com</li>
+                <li>Address: An Quy, Vĩnh Long (formerly Bến Tre)</li>
+              </ul>
+            </section>
+          </aside>
+
+          <!-- MAIN -->
+          <main class="right" aria-label="Cột phải">
+            <section class="card">
+              <h3>Kinh nghiệm</h3>
+              <div class="timeline">
+                <article class="item">
+                  <h4>TGL Solution</h4>
+                  <div class="when">01/2023 – Hiện tại • TP.HCM</div>
+                  <ul>
+                    <li>Phát triển ứng dụng VinaCad với C#, .NET Core, WPF.</li>
+                    <li>
+                      Xây dựng hệ thống cơ sở dữ liệu phân tán với PostgreSQL,
+                      tích hợp thanh toán Visa/Paypal
+                    </li>
+                    <li>
+                      Phối hợp backend triển khai GraphQL, rút ngắn 40% thời
+                      gian tải trang.
+                    </li>
+                  </ul>
+                </article>
+                <article class="item">
+                  <h4>MyLan Group</h4>
+                  <div class="when">08/2021 – 12/2022 • Hà Nội</div>
+                  <ul>
+                    <li>
+                      Xây dựng ứng dụng quản lý truy xuất nguồn gốc với React,
+                      Redux, Node.js. Phân tích xây dựng API và tích hợp hệ
+                      thống ERP của khách hàng.
+                    </li>
+                    <li>
+                      Viết thư viện Objective-C trên IOS và Java cho thiết bị
+                      RFID như Chainway, Zebra.
+                    </li>
+                    <li>
+                      Xây dựng mobile app quản lý truy xuất nguồn gốc Flutter
+                      trên Android và IOS.
+                    </li>
+                    <li>
+                      Build ứng dụng quản lý in ấn và kiểm tra chất lượng QR
+                      Code sản phẩm với ElectronJs/WPF/C#.
+                    </li>
+                  </ul>
+                </article>
+              </div>
+            </section>
+
+            <section class="card">
+              <h3>Dự án tiêu biểu</h3>
+              <div class="grid-2">
+                <div class="item">
+                  <h4>Hệ thống Dashboard Phân tích</h4>
+                  <div class="when">2024</div>
+                  <ul>
+                    <li>Xây dựng module chart tuỳ biến với Recharts/D3.</li>
+                    <li>Tối ưu SSR + caching, FCP < 1.2s.</li>
+                    <li>Đóng góp 60+ PR, viết 15+ test E2E (Playwright).</li>
+                  </ul>
+                </div>
+                <div class="item">
+                  <h4>Website Thương mại điện tử mini</h4>
+                  <div class="when">2023</div>
+                  <ul>
+                    <li>Giỏ hàng thời gian thực, thanh toán Stripe Sandbox.</li>
+                    <li>Áp dụng Atomic Design và Zustand state.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section class="card">
+              <h3>Học vấn</h3>
+              <div class="timeline">
+                <article class="item">
+                  <h4>Cử nhân CNTT — ĐH Công nghệ</h4>
+                  <div class="when">2017 – 2021 • GPA: 3.4/4.0</div>
+                </article>
+              </div>
+            </section>
+          </main>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      function setTheme(name) {
+        const root = document.querySelector("html");
+        if (!name) root.removeAttribute("data-theme");
+        else root.setAttribute("data-theme", name);
+        localStorage.setItem("cv-theme", name || "blue");
+      }
+      (function initTheme() {
+        const saved = localStorage.getItem("cv-theme");
+        if (saved && saved !== "blue") setTheme(saved);
+      })();
+    </script>
+  </body>
+</html>
